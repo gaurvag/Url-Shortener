@@ -1,1 +1,5 @@
 rootProject.name = 'urlshortener'
+include 'urlshortener-service'
+include 'urlshortener-model'
+include 'urlshortener-dto'
+

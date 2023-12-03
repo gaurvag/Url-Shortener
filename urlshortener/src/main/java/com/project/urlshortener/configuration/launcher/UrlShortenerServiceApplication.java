@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.project.urlshortener")
+@ComponentScan(basePackages = "com.project")
 @EnableMongoRepositories(basePackages = "com.project.urlshortener.repository")
 public class UrlShortenerServiceApplication {
 

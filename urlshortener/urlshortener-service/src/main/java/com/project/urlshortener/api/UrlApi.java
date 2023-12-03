@@ -1,7 +1,6 @@
 package com.project.urlshortener.api;
 
 import com.project.urlshortener.dto.request.UrlRequestDto;
-import com.project.urlshortener.dto.response.UrlResponseDto;
 import com.project.urlshortener.service.UrlService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
