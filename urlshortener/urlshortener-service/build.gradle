@@ -1,7 +1,19 @@
 jar.enabled=true
 bootJar.enabled=false
 
+//repositories {
+//    maven {
+//        name = "GitHubPackages"
+//        url = uri("https://maven.pkg.github.com/gaurvag/my-java-packages-gradle")
+//        credentials {
+//            username = project.findProperty("user") ?: System.getenv("USERNAME")
+//            password = project.findProperty("token") ?: System.getenv("TOKEN")
+//        }
+//    }
+//}
+
 dependencies{
+//    implementation ('com.project.urlshortener:urlshortener-dto:0.0.2-SNAPSHOT')
     implementation project(':urlshortener-dto')
     implementation project(':urlshortener-model')
 }
