@@ -1,2 +1,37 @@
+plugins {
+    id("maven-publish")
+}
+
 jar.enabled=true
 bootJar.enabled=false
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/gaurvag/my-java-packages-gradle")
+            credentials {
+                username = project.findProperty("user") ?: System.getenv("USERNAME")
+                password = project.findProperty("token") ?: System.getenv("TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+            pom {
+                groupId = 'com.project.urlshortener'
+                artifactId = 'urlshortener-dto'
+                version = '0.0.2-SNAPSHOT'
+            }
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+}
