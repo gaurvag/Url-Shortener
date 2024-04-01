@@ -88,9 +88,7 @@ public class UrlServiceImpl implements UrlService {
     }
 
     private String generateShortLink(String shortKey) {
-        int port = serverProperties.getPort();
-        String baseUrl = String.format(LOCALHOST, port);
-        return StringUtils.join(baseUrl, URL_REDIRECT, shortKey);
+        return StringUtils.join(BASE_URL, URL_REDIRECT, shortKey);
     }
 
     private Long generateUrlId(){
