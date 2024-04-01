@@ -40,17 +40,24 @@ public class UrlServiceImpl implements UrlService {
         Url url = getUrl(urlRequestDto, generateUrlId, shortKey);
         urlRepository.save(url);
 
-        return UrlResponseDto.builder()
-                             .urlId(generateUrlId)
-                             .originalUrl(url.getOriginalUrl())
-                             .shortLink(generateShortLink(shortKey))
-                             .numberOfClicks(url.getNumberOfClicks())
-                             .expirationDate(url.getExpirationDate())
-                             .build();
+        return getUrlResponseDto(generateUrlId, shortKey, url);
     }
 
     @Override
     public void redirectToOriginalUrl(String shortKey, HttpServletResponse response) throws IOException {
+        Url url = getUrlByShortKey(shortKey);
+        url.setNumberOfClicks(url.getNumberOfClicks() + 1);
+        urlRepository.save(url);
+        response.sendRedirect(url.getOriginalUrl());
+    }
+
+    @Override
+    public Long getNumberOfClicksByShortKey(String shortKey) {
+        Url url = getUrlByShortKey(shortKey);
+        return url.getNumberOfClicks();
+    }
+
+    private Url getUrlByShortKey(String shortKey) {
         Url url = urlRepository.findByShortKey(shortKey);
         if(Objects.isNull(url)){
             log.error("UrlServiceImpl:redirectToOriginalUrl Url not found");
@@ -60,8 +67,7 @@ public class UrlServiceImpl implements UrlService {
             log.info("UrlServiceImpl:redirectToOriginalUrl Url with id: {} is expired", url.getUrlId());
             throw new UrlExpiredException("Url is expired, create new short url");
         }
-        url.setNumberOfClicks(url.getNumberOfClicks() + 1);
-        response.sendRedirect(url.getOriginalUrl());
+        return url;
     }
 
     private Url getUrl(UrlRequestDto urlRequestDto, Long generateUrlId, String shortKey) {
@@ -90,5 +96,15 @@ public class UrlServiceImpl implements UrlService {
     private Long generateUrlId(){
         Sequence sequence = sequenceService.getSequenceById(URL_SEQUENCE_ID);
         return sequence.getCounterValue();
+    }
+
+    private UrlResponseDto getUrlResponseDto(Long generateUrlId, String shortKey, Url url) {
+        return UrlResponseDto.builder()
+                             .urlId(generateUrlId)
+                             .originalUrl(url.getOriginalUrl())
+                             .shortLink(generateShortLink(shortKey))
+                             .numberOfClicks(url.getNumberOfClicks())
+                             .expirationDate(url.getExpirationDate())
+                             .build();
     }
 }

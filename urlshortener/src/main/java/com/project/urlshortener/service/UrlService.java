@@ -11,4 +11,6 @@ public interface UrlService {
     UrlResponseDto shortenUrl(UrlRequestDto urlRequestDto);
 
     void redirectToOriginalUrl(String shortKey, HttpServletResponse response) throws IOException;
+
+    Long getNumberOfClicksByShortKey(String shortKey);
 }

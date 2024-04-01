@@ -1,7 +1,6 @@
 package com.project.urlshortener.api;
 
 import com.project.urlshortener.dto.request.UrlRequestDto;
-import com.project.urlshortener.dto.response.UrlResponseDto;
 import com.project.urlshortener.service.UrlService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -29,6 +28,11 @@ public class UrlApi {
     public ResponseEntity<Map<String,Object>> redirectToOriginalUrl(@PathVariable String shortKey, HttpServletResponse response) throws IOException {
         urlService.redirectToOriginalUrl(shortKey, response);
         return okResponseEntity("done");
+    }
+
+    @GetMapping("clicks/{shortKey}")
+    public ResponseEntity<Map<String,Object>> redirectToOriginalUrl(@PathVariable String shortKey) {
+        return okResponseEntity(urlService.getNumberOfClicksByShortKey(shortKey));
     }
 
 }
