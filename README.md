@@ -7,8 +7,10 @@ A simple URL shortening service built with Spring Boot and MongoDB, capable of s
 
 *1) Shorten a Url*
 <img width="900" alt="image" src="https://github.com/gaurvag/Url-Shortener/assets/56625397/618ce622-32dd-4234-bc8f-6c8e2891c541">
+
 *2) Redirect to the Original URL*
 <img width="900" alt="image" src="https://github.com/gaurvag/Url-Shortener/assets/56625397/61dae585-9d98-4705-883d-caca6d4f6c2e">
+
 *3) Checking Clicks on the Shortened Url*
 <img width="900" alt="image" src="https://github.com/gaurvag/Url-Shortener/assets/56625397/be066b75-e1e7-4d63-8e8c-74e393fb376b">
 
