@@ -2,16 +2,25 @@
 
 A simple URL shortening service built with Spring Boot and MongoDB, capable of supporting up to 3.5 trillion unique short URLs.
 
+## Demo
+Hosted Here: https://url-shortner-rouge.vercel.app/
+1) Shorten a Url
+<img width="900" alt="image" src="https://github.com/gaurvag/Url-Shortener/assets/56625397/618ce622-32dd-4234-bc8f-6c8e2891c541">
+2) Redirect to the Original URL
+<img width="900" alt="image" src="https://github.com/gaurvag/Url-Shortener/assets/56625397/61dae585-9d98-4705-883d-caca6d4f6c2e">
+3) Checking Clicks on the Shortened Url
+<img width="900" alt="image" src="https://github.com/gaurvag/Url-Shortener/assets/56625397/be066b75-e1e7-4d63-8e8c-74e393fb376b">
+
 ## Getting Started
 
 *Prerequisites:* 
 1. Ensure you have Java and MongoDB installed on your system.
 2. Clone the Repository: Clone this repository to your local machine.
 
-*Running the Project:*
+*Running the Project in Local:*
 
    - Open the project in your Spring Boot-compatible IDE, such as IntelliJ IDEA.
-   
+   - Checkout to develop branch.
    - Build and run the project to start the URL Shortener service.
    - You can now use API calls to interact with the URL Shortener. Below are examples of API calls using cURL, which you can also perform in Postman.
 
